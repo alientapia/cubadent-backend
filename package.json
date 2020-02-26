@@ -1,0 +1,23 @@
+{
+  "name": "cubadent-backend",
+  "version": "1.0.0",
+  "description": "API pacientes para Cubadent",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alientapia/cubadent-backend.git"
+  },
+  "author": "Alien Tapia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alientapia/cubadent-backend/issues"
+  },
+  "homepage": "https://github.com/alientapia/cubadent-backend#readme",
+  "dependencies": {
+    "expess": "0.0.1-security",
+    "morgan": "^1.9.1"
+  }
+}
