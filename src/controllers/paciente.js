@@ -50,13 +50,41 @@ var controller = {
 
     getPacientes: function(req, res){
 
-        Paciente.find({}).sort('apellido').exec((err, pacientes)=>{
+        Paciente.find({}).sort('-apellido').exec((err, pacientes)=>{
             if(err) return res.status(500).send({message:'Error al obtener datos'});
 
             if(!pacientes) return res.status(404).send({message: 'No hay pacientes que mostrar'});
 
             return res.status(200).send({pacientes});
         })
+    },
+
+    updatePaciente: function(req, res){
+
+        var pacienteId = req.params.id;
+        var update = req.body;
+
+        Paciente.findByIdAndUpdate(pacienteId, update, {new: true}, (err, pacienteUpdated) => {
+
+            if(err) return res.status(500).send({message: 'Error al actualizar'});
+
+            if(!pacienteUpdated) return res.status(404).send({message: 'No existe el paciente para actualizar'});
+
+            return res.status(200).send({pacienteUpdated});
+        });
+    },
+
+    deletePaciente: function(req,res){
+
+        var pacienteId = req.params.id;
+
+        Paciente.findByIdAndDelete(pacienteId, (err, pacieteRemoved) => {
+            if(err) return res.status(500).send({message: 'Error al eliminar paciente'});
+
+            if(!pacieteRemoved) return res.status(404).send({message: 'No existe el paciente para eliminar'});
+
+            return res.status(200).send({pacieteRemoved});
+        });
     }
 
 };
